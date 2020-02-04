@@ -1,11 +1,8 @@
 const sgMail = require('@sendgrid/mail');
 
-const sendgridAPIKey =
-  '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';
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-sgMail.setApiKey(sendgridAPIKey);
-
-const sendWecomeEmail = (email, name) => {
+const sendWelcomeEmail = (email, name) => {
   sgMail.send({
     to: email,
     from: 'yanhao-gong@hotmail.com',
@@ -25,6 +22,6 @@ const sendCancelEmail = (email, name) => {
 };
 
 module.exports = {
-  sendWecomeEmail,
+  sendWelcomeEmail,
   sendCancelEmail
 };
