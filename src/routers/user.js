@@ -90,8 +90,8 @@ router.patch('/users/me', auth, async (req, res) => {
 //delete profile for single user
 router.delete('/users/me', auth, async (req, res) => {
   try {
-    await req.user.remove(req.user.email, req.user.name);
-    sendCancelEmail();
+    await req.user.remove();
+    sendCancelEmail(req.user.email, req.user.name);
     res.send(req.user);
   } catch (e) {
     res.status(500).send();
